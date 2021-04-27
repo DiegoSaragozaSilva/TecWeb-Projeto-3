@@ -1,0 +1,16 @@
+.Header {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+.Logo-img {
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+.Description-text {
+    align-self: flex-end;
+    padding-left: 0.5rem;
+}
