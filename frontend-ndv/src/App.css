@@ -25,6 +25,10 @@
   color: white;
 }
 
+.SearchArea {
+  padding-top: 5rem;
+}
+
 .App-link {
   color: #61dafb;
 }

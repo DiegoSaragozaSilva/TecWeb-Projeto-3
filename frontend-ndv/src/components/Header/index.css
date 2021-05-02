@@ -1,6 +1,7 @@
 .Header {
     display: flex;
     justify-content: left;
+    align-items: center;
     width: 100%;
     background-color: #f1f1f1;
 }
@@ -11,6 +12,10 @@
 }
 
 .Description-text {
-    align-self: flex-end;
     padding-left: 0.5rem;
+}
+
+.Link-text {
+    padding-left: 2.5rem;
+    text-decoration: none;
 }

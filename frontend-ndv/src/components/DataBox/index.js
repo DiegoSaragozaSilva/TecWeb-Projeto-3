@@ -4,7 +4,7 @@ import "./index.css";
 export default function DataBox(props) {
   if(props.media_type == "video"){
     return (
-      <div className = "DataBox">
+      <div className = "DataBox" id = "APOD">
         <p className = "DivTitle-text">Image/Video of the day provided by APOD (Astronomy Picture of the Day) API.</p>
         <p className = "Title-text"><strong>Title:</strong> {props.title}</p>
         <p className = "Date-text"><strong>Date:</strong> {props.date}</p>
@@ -16,7 +16,7 @@ export default function DataBox(props) {
   else {
     console.log(props.url);
     return (
-      <div className = "DataBox">
+      <div className = "DataBox" id = "APOD">
         <p className = "DivTitle-text">Image/Video of the day provided by APOD (Astronomy Picture of the Day) API.</p>
         <p className = "Title-text"><strong>Title:</strong> {props.title}</p>
         <p className = "Date-text"><strong>Date:</strong> {props.date}</p>
