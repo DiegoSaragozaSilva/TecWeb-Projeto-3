@@ -1,5 +1,6 @@
 # Fiz a minha própria implementação do serializador APOD e NASA por não usar um Model do Django para ambos
-import random
+from rest_framework import serializers
+from .models import Favorite
 
 def APODSerializer(apod_request):
     data = {
@@ -44,3 +45,8 @@ def NASASerializer(nasa_request):
     
     print(images)
     return images
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = ['id', 'title', 'date', 'explanation', 'url']

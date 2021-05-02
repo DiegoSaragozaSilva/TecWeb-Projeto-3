@@ -1,7 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.http import Http404
+from django.http import Http404 
 from .serializers import *
+from .models import Favorite
 import requests
 
 api_key = "6E0VJLKPg4m6Mwf25Hgj7noeckNppYaHlY018kVf"
@@ -26,3 +27,19 @@ def api_nasa(request):
 def api_nasa_search(request, query):
     nasa_response = requests.get("https://images-api.nasa.gov/search" + "?q={}".format(query) + "&media_type=image")
     return Response(NASASerializer(nasa_response))
+
+@api_view(['GET', 'POST'])
+def favorite_request(request):
+    if request.method == 'POST':
+        new_favorite = Favorite(title = request.data['title'],
+                                date = request.data['date'],
+                                explanation = request.data['explanation'],
+                                url = request.data['url'])
+        new_favorite.save()
+        print(new_favorite)
+        return Response('')
+    
+    elif request.method == 'GET':
+        all_favorites = Favorite.objects.all()
+        print(FavoriteSerializer(all_favorites, many = True).data)
+        return Response(FavoriteSerializer(all_favorites, many = True).data)
