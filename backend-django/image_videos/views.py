@@ -4,6 +4,7 @@ from django.http import Http404
 from .serializers import *
 from .models import Favorite
 import requests
+import json
 
 api_key = "6E0VJLKPg4m6Mwf25Hgj7noeckNppYaHlY018kVf"
 # api_key = "DEMO_KEY"
@@ -36,10 +37,8 @@ def favorite_request(request):
                                 explanation = request.data['explanation'],
                                 url = request.data['url'])
         new_favorite.save()
-        print(new_favorite)
         return Response('')
     
     elif request.method == 'GET':
         all_favorites = Favorite.objects.all()
-        print(FavoriteSerializer(all_favorites, many = True).data)
         return Response(FavoriteSerializer(all_favorites, many = True).data)

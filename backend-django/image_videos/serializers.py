@@ -43,7 +43,6 @@ def NASASerializer(nasa_request):
     except:
         return images
     
-    print(images)
     return images
 
 class FavoriteSerializer(serializers.ModelSerializer):

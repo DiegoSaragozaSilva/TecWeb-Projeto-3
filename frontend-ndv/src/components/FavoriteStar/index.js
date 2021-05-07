@@ -9,7 +9,7 @@ export default function FavoriteStar(props) {
         <div className = "FavoriteStar">
             <img className = "Favorite-image" src = {favorite_img} onClick = {(e) => {
                 axios.post("http://localhost:8000/favorite/", props);
-                console.log("AJIFJAWFIAW");
+                window.alert("Favorite added! Please, reload the page to see it.");
             }}></img>
         </div>
     );

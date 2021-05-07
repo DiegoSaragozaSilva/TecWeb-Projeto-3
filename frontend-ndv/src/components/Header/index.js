@@ -8,6 +8,8 @@ export default function DataBox(props) {
         <p className = "Description-text">Nasa Data Visualizer</p>
         <a className = "Link-text" href = "#APOD">APOD API</a>
         <a className = "Link-text" href = "#NASA">NASA Library API</a>
+        <a className = "Link-text" href = "#Favorites">Favorites</a>
+
     </div>
   );
 }
