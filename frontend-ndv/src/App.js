@@ -31,15 +31,12 @@ function App() {
   useEffect(() => {
     axios.get(`http://54.88.109.168/diegoss3/token`).then((response) => {
       let body = {"token": response.data.token};
-      console.log(body);
       axios({method: "post", url: "http://54.88.109.168/diegoss3/image", data: body}).then((response) => {
         let hostname = "http://54.88.109.168";
         setSrc(hostname + response.data.image_uri);
       })
     })
   }, []);
-
-  console.log(img_src);
 
   return (
     <div className="App">
