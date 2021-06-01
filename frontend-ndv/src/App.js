@@ -13,6 +13,8 @@ function App() {
   const [dataApod, setDataApod] = useState([]);
   const [dataNASA, setDataNASA] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [token, setToken] = useState([]);
+  const [img_src, setSrc] = useState([]);
 
   useEffect(() => {
       axios.get(`http://localhost:8000/api/ndv/apod`).then((response) => setDataApod(response.data));
@@ -26,11 +28,23 @@ function App() {
     axios.get(`http://localhost:8000/favorite/`).then((response) => setFavorites(response.data));
   }, []);
 
-  console.log(favorites);
+  useEffect(() => {
+    axios.get(`http://54.88.109.168/diegoss3/token`).then((response) => {
+      let body = {"token": response.data.token};
+      console.log(body);
+      axios({method: "post", url: "http://54.88.109.168/diegoss3/image", data: body}).then((response) => {
+        let hostname = "http://54.88.109.168";
+        setSrc(hostname + response.data.image_uri);
+      })
+    })
+  }, []);
+
+  console.log(img_src);
 
   return (
     <div className="App">
-      <Header />
+      <Header img_src = {img_src}/>
+
       <DataBox title = {dataApod.title} date = {dataApod.date} explanation = {dataApod.explanation} url = {dataApod.url} media_type = {dataApod.media_type}/>
       <p className = "DateSelector-text">If you want to choose a date to view the image/video linked to it, you can use the picker below.</p>
       <input className = "DateSelector-input" type = "date" onChange = {(e) => {

@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import SeloAprovacao from "../SeloAprovacao";
 
 export default function DataBox(props) {
   return (
@@ -9,6 +10,7 @@ export default function DataBox(props) {
         <a className = "Link-text" href = "#APOD">APOD API</a>
         <a className = "Link-text" href = "#NASA">NASA Library API</a>
         <a className = "Link-text" href = "#Favorites">Favorites</a>
+        <SeloAprovacao img_src = {props['img_src']}></SeloAprovacao>
 
     </div>
   );
